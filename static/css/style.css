@@ -1,18 +1,26 @@
+/*---------------------------------------------------
+    LESS Elements 0.9
+  ---------------------------------------------------
+    A set of useful LESS mixins
+    More info at: http://lesselements.com
+  ---------------------------------------------------*/
 body {
   margin: 0;
   padding: 0;
   background-color: #ffffff;
   color: #4d4d4d;
   font-family: 'PT Sans', sans-serif;
-  font-size: 18px;
+  font-size: 16px;
+  background-image: url('/theme/images/brick-wall.png');
+  background-attachment: fixed;
 }
 a {
   color: #000000;
   text-decoration: none;
 }
 hr {
-  color: #eeeeee;
-  background-color: #eeeeee;
+  color: #d3d3d3;
+  background-color: #d3d3d3;
   height: 1px;
   border: none;
 }
@@ -37,12 +45,27 @@ aside div#user_meta ul {
   list-style-type: none;
 }
 aside div#user_meta ul li {
-  display: inline;
+  display: inline-block;
   line-height: 3em;
 }
 aside div#user_meta ul li a {
   padding: 5px 15px 5px 15px;
-  border: 3px solid #eeeeee;
+  border: 3px solid #d3d3d3;
+  -webkit-border-top-right-radius: 15px;
+  -webkit-border-bottom-right-radius: 0;
+  -webkit-border-bottom-left-radius: 0;
+  -webkit-border-top-left-radius: 0;
+  -moz-border-radius-topright: 15px;
+  -moz-border-radius-bottomright: 0;
+  -moz-border-radius-bottomleft: 0;
+  -moz-border-radius-topleft: 0;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  -moz-background-clip: padding-box;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
   border-radius: 15px;
   -moz-border-radius: 15px;
   -webkit-border-radius: 15px;
@@ -50,8 +73,8 @@ aside div#user_meta ul li a {
 }
 main header {
   padding: 40px;
-  border-top: #eeeeee 1px solid;
-  border-bottom: #eeeeee 1px solid;
+  border-top: #d3d3d3 1px solid;
+  border-bottom: #d3d3d3 1px solid;
 }
 main header p {
   font-weight: bold;
@@ -64,28 +87,90 @@ main article {
 }
 main article div.article_text {
   line-height: 1.375em;
+  /* Line numbers are enabled */
 }
 main article div.article_text a {
   text-decoration: underline;
 }
 main article div.article_text code {
-  margin: 2px;
-  padding: 0;
-  color: #000000;
-  font-size: .8rem;
+  color: black;
+  font-size: 0.9rem;
   font-family: 'PT Mono', monospace;
-  background: #eeeeee;
+  padding: 1px 3px;
+  background: #d3d3d3;
 }
 main article div.article_text pre {
-  margin: 22px 2px 22px 2px;
-  padding: 2px;
-  color: #000000;
-  border-left: 3px solid #0e94ec;
-  font-size: .8rem;
+  color: black;
+  font-size: 0.9rem;
   font-family: 'PT Mono', monospace;
-  background: #eeeeee;
   line-height: 1.125em;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+main article div.article_text div.highlight pre {
+  padding-left: 10px;
   overflow-x: auto;
+  border: 1px solid #c7c7c7;
+  border-left: 3px solid #0e94ec;
+  background: #f6f6f6;
+}
+main article div.article_text table.highlighttable {
+  table-layout: fixed;
+  width: 100%;
+  border: 1px solid #c7c7c7;
+  border-collapse: collapse;
+}
+main article div.article_text table.highlighttable pre {
+  border: none;
+}
+main article div.article_text table.highlighttable td {
+  padding: 0px;
+}
+main article div.article_text table.highlighttable td.linenos {
+  width: 30px;
+  overflow: hidden;
+  text-align: right;
+  border-left: 3px solid #0e94ec;
+  border-right: 1px solid #c7c7c7;
+  background: #dddddd;
+  vertical-align: top;
+}
+main article div.article_text table.highlighttable td.linenos div.linenodiv pre {
+  padding-right: 4px;
+  float: right;
+}
+main article div.article_text div.admonition {
+  border-width: 1px 1px 1px 7px;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: #c7c7c7;
+  border-left-color: #4d4d4d;
+  background-color: #f6f6f6;
+}
+main article div.article_text div.admonition.update,
+main article div.article_text div.admonition.hint,
+main article div.article_text div.admonition.important,
+main article div.article_text div.admonition.note,
+main article div.article_text div.admonition.tip {
+  border-left-color: #0e94ec;
+}
+main article div.article_text div.admonition.warning,
+main article div.article_text div.admonition.attention,
+main article div.article_text div.admonition.caution,
+main article div.article_text div.admonition.danger {
+  border-left-color: red;
+}
+main article div.article_text div.admonition p {
+  margin: 0px;
+  padding: 10px 15px;
+}
+main article div.article_text div.admonition p.admonition-title {
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 5px 15px;
+  border-bottom: 1px solid #c7c7c7;
 }
 main article div.article_text blockquote {
   margin: 22px 2px 22px 2px;
@@ -101,12 +186,27 @@ main article div.article_meta {
   color: #999999;
 }
 main footer {
-  border-top: #eeeeee 1px solid;
+  border-top: #d3d3d3 1px solid;
   padding: 40px;
 }
 main footer a.button_accent {
   padding: 10px;
   border: 2px solid #0e94ec;
+  -webkit-border-top-right-radius: 20px;
+  -webkit-border-bottom-right-radius: 0;
+  -webkit-border-bottom-left-radius: 0;
+  -webkit-border-top-left-radius: 0;
+  -moz-border-radius-topright: 20px;
+  -moz-border-radius-bottomright: 0;
+  -moz-border-radius-bottomleft: 0;
+  -moz-border-radius-topleft: 0;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  -moz-background-clip: padding-box;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
   border-radius: 20px;
   -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
@@ -123,35 +223,37 @@ main footer a.button_accent:active {
   background-color: #0e94ec;
 }
 main div#ending_message {
-  border-top: #eeeeee 1px solid;
+  border-top: #d3d3d3 1px solid;
   padding: 0 40px 0 40px;
   color: #999999;
   font-size: .6rem;
 }
 @media screen and (min-width: 1024px) {
   aside {
-    width: 25%;
+    width: 30%;
     height: 100%;
     position: fixed;
     top: 0;
     left: 0;
-    border-right: #eeeeee 1px solid;
+    border-right: #d3d3d3 1px solid;
   }
   aside h2 {
     margin: 10px 0 0 0;
   }
   aside div#user_meta {
-    max-width: 192px;
     text-align: right;
+  }
+  aside div#user_meta img {
+    border-radius: 4px;
   }
   aside div#user_meta ul li {
     display: block;
   }
   main {
-    width: 75%;
+    width: 70%;
     position: absolute;
     top: 0;
-    left: 25%;
+    left: 30%;
     overflow-x: hidden;
     overflow-y: hidden;
   }
@@ -162,3 +264,4 @@ main div#ending_message {
     border-top: 0;
   }
 }
+/*# sourceMappingURL=style.css.map */

@@ -1,7 +1,9 @@
+@import "elements.less";
+
 @red:  #ff0000;
 @black:  #000000;
 @white:  #ffffff;
-@light-grey:  #eeeeee;
+@light-grey: #d3d3d3; // #eeeeee;
 @med-grey:  #999999;
 @dark-grey:  #4d4d4d;
 @blue:  #0e94ec;
@@ -9,6 +11,17 @@
 @sans: 'PT Sans', sans-serif;
 @serif: 'PT Serif', serif;
 @mono: 'PT Mono', monospace;
+@image-url: '/theme/images/brick-wall.png';
+
+@code_font_size: 0.9rem;
+@code-border: #c7c7c7;
+@code-background: #f6f6f6;
+@code-linebg: #dddddd;
+
+// Admonition
+@danger: red;
+// blockquote
+@horiz_pad: 40px;
 
 body {
   margin: 0;
@@ -16,7 +29,9 @@ body {
   background-color: @white;
   color: @dark-grey;
   font-family: @sans;
-  font-size: 18px;
+  font-size: 16px;
+  background-image: url(@image-url);
+  background-attachment: fixed;
 }
 
 a {
@@ -62,7 +77,7 @@ aside {
       list-style-type: none;
 
       li {
-        display: inline;
+        display: inline-block;
         line-height: 3em;
 
         a {
@@ -102,30 +117,100 @@ main {
         text-decoration: underline;
       }
 
-      code {
-        margin: 2px;
-        padding: 0;
-        color: @black;
-        font-size: .8rem;
+      .mixin(codeformat) {
+        color: black;
+        font-size: @code_font_size;
         font-family: @mono;
+      }
+
+      code {
+        .mixin(codeformat);
+        padding: 1px 3px;
         background: @light-grey;
       }
 
       pre {
-        margin: 22px 2px 22px 2px;
-        padding: 2px;
-        color: @black;
-        border-left: 3px solid @accent;
-        font-size: .8rem;
-        font-family: @mono;
-        background: @light-grey;
+        .mixin(codeformat);
         line-height: 1.125em;
-        overflow-x: auto;
+        margin-bottom: 0px;
+        margin-top: 0px;
+        padding-top: 5px;
+        padding-bottom: 10px;
       }
 
-      blockquote {
+      div.highlight pre {
+        padding-left: 10px;
+        overflow-x: auto;
+        border: 1px solid @code-border;
+        border-left: 3px solid @accent;
+        background: @code-background;
+      }
+
+      /* Line numbers are enabled */
+      table.highlighttable {
+        table-layout: fixed;
+        width: 100%;
+        border: 1px solid @code-border;
+        border-collapse: collapse;
+
+        pre {
+          border: none;
+        }
+
+        td {
+          padding: 0px;
+        }
+
+        td.linenos {
+          width: 30px;
+          overflow: hidden;
+          text-align: right;
+          border-left: 3px solid @accent;
+          border-right: 1px solid @code-border;
+          background: @code-linebg;
+          vertical-align:top;
+
+          div.linenodiv pre {
+            padding-right: 4px;
+            float: right;
+          }
+        }
+      }
+
+      div.admonition {
+
+        border-width: 1px 1px 1px 7px;
+        border-radius: 10px;
+        border-style: solid;
+        border-color: @code-border;
+        border-left-color: @dark-grey;
+        background-color: @code-background;
+
+        &.update, &.hint, &.important, &.note, &.tip {
+          border-left-color: @accent;
+        }
+
+        &.warning, &.attention, &.caution, &.danger {
+          border-left-color: @danger;
+        }
+
+        p {
+          margin: 0px;
+          padding: 10px 15px;
+        }
+
+        p.admonition-title{
+          text-transform: uppercase;
+          font-weight: bold;
+          padding: 5px 15px;
+          border-bottom: 1px solid @code-border;
+        }
+      }
+
+
+       blockquote {
         margin: 22px 2px 22px 2px;
-        padding-left: 40px;
+        padding-left: @horiz_pad;
         color: @med-grey;
         font-style: italic;
       }
@@ -176,7 +261,7 @@ main {
 
 @media screen and (min-width: 1024px) {
   aside {
-    width: 25%;
+    width: 30%;
     height: 100%;
     position: fixed;
     top: 0;
@@ -188,8 +273,12 @@ main {
     }
 
     div#user_meta {
-      max-width: 192px;
+      // max-width: 192px;
       text-align: right;
+
+      img {
+        border-radius: 4px;
+      }
 
       ul {
         li {
@@ -200,10 +289,10 @@ main {
   }
 
   main {
-    width: 75%;
+    width: 70%;
     position: absolute;
     top: 0;
-    left: 25%;
+    left: 30%;
     overflow-x: hidden;
     overflow-y: hidden;
 
@@ -216,3 +305,8 @@ main {
     }
   }
 }
+
+
+// admonition icon set 
+
+
